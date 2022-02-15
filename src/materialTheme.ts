@@ -5,6 +5,13 @@ const theme = createTheme({
   palette: {
     primary: purple,
   },
+  typography: {
+    fontFamily: "Lato",
+    button: {
+      fontFamily: "Roboto",
+      fontSmooth: "auto",
+    },
+  },
   components: {
     MuiButton: {
       defaultProps: {

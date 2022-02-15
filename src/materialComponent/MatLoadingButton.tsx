@@ -5,11 +5,16 @@ import { FC } from "react";
 interface MatButtonProps {
   isFullWidth?: boolean;
   label: string;
+  type?: "button" | "submit";
 }
 
-const MatButton: FC<MatButtonProps> = ({ isFullWidth = false, label }) => {
+const MatButton: FC<MatButtonProps> = ({
+  type = "submit",
+  isFullWidth = false,
+  label,
+}) => {
   return (
-    <LoadingButton fullWidth={isFullWidth} variant="contained">
+    <LoadingButton type={type} fullWidth={isFullWidth} variant="contained">
       {label}
     </LoadingButton>
   );

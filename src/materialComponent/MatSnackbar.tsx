@@ -1,53 +1,58 @@
-import Button from "@mui/material/Button";
 import Snackbar from "@mui/material/Snackbar";
 import IconButton from "@mui/material/IconButton";
 import CloseIcon from "@mui/icons-material/Close";
-import { Fragment, useState } from "react";
+import { FC, Fragment } from "react";
+import { useAppDispatch, useAppSelector } from "../store/hooks";
+import { selectSnackbars, unsetSnackbar } from "../store/Alert/alertSlice";
 
-const MatSnackbar = () => {
-  const [open, setOpen] = useState(false);
+interface MatSnackbarProps {
+  isShow: boolean;
+  setShow: (value: React.SetStateAction<boolean>) => void;
+}
 
-  const handleClick = () => {
-    setOpen(true);
-  };
+const MatSnackbar: FC<MatSnackbarProps> = ({ isShow, setShow }) => {
+  const dispatch = useAppDispatch();
+  const snackbars = useAppSelector(selectSnackbars);
 
-  const handleClose = (
-    event: React.SyntheticEvent | Event,
-    reason?: string
-  ) => {
+  const handleClose = (_: React.SyntheticEvent | Event, reason?: string) => {
     if (reason === "clickaway") {
       return;
     }
-
-    setOpen(false);
+    setShow(false);
   };
 
-  const action = (
-    <Fragment>
-      <Button color="secondary" size="small" onClick={handleClose}>
-        UNDO
-      </Button>
-      <IconButton
-        size="small"
-        aria-label="close"
-        color="inherit"
-        onClick={handleClose}
-      >
-        <CloseIcon fontSize="small" />
-      </IconButton>
-    </Fragment>
-  );
+  console.log("snackbars : ", snackbars);
 
   return (
     <div>
-      <Button onClick={handleClick}>Open simple snackbar</Button>
-      <Snackbar
-        open={open}
-        autoHideDuration={6000}
-        onClose={handleClose}
-        message="Note archived"
-        action={action}
-      />
+      {snackbars.map((snackbar) => (
+        <Snackbar
+          anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
+          key={snackbar.id}
+          open={isShow}
+          autoHideDuration={6000}
+          onClose={(e, r) => {
+            handleClose(e, r);
+            dispatch(unsetSnackbar(snackbar));
+          }}
+          message={snackbar.text}
+          action={
+            <Fragment>
+              <IconButton
+                size="small"
+                aria-label="close"
+                color="inherit"
+                onClick={() => {
+                  setShow(false);
+                  dispatch(unsetSnackbar(snackbar));
+                }}
+              >
+                <CloseIcon fontSize="small" />
+              </IconButton>
+            </Fragment>
+          }
+        />
+      ))}
     </div>
   );
 };

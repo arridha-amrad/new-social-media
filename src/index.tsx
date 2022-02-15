@@ -2,12 +2,12 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
-import { store } from "./app/store";
 import { Provider } from "react-redux";
 import * as serviceWorker from "./serviceWorker";
 import ThemeProvider from "@mui/material/styles/ThemeProvider";
 import theme from "./materialTheme";
 import { BrowserRouter } from "react-router-dom";
+import { store } from "./store";
 
 ReactDOM.render(
   <React.StrictMode>

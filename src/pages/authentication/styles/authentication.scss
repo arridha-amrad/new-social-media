@@ -28,6 +28,17 @@
         background-color: white;
         border-radius: 1rem !important;
 
+        .title {
+          text-align: center;
+        }
+
+        .form-auth {
+          display: flex;
+          gap: 1rem;
+          flex-direction: column;
+          justify-content: center;
+        }
+
         .mid-text {
           text-align: center;
         }

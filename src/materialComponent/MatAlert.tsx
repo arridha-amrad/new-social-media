@@ -1,19 +1,26 @@
-import { useState } from "react";
+import { FC } from "react";
 
 import Box from "@mui/material/Box";
 import Alert from "@mui/material/Alert";
 import IconButton from "@mui/material/IconButton";
 import Collapse from "@mui/material/Collapse";
 import CloseIcon from "@mui/icons-material/Close";
+import { Alert as IAlert } from "../store/Alert/AlertTypes";
+import { useAppDispatch } from "../store/hooks";
+import { unsetAlert } from "../store/Alert/alertSlice";
 
-const MatAlert = () => {
-  const [open, setOpen] = useState(true);
+interface MatAlertProps {
+  alert: IAlert | null;
+}
+
+const MatAlert: FC<MatAlertProps> = ({ alert = null }) => {
+  const dispatch = useAppDispatch();
 
   return (
     <Box sx={{ width: "100%" }}>
-      <Collapse in={open}>
+      <Collapse in={!!alert}>
         <Alert
-          severity="error"
+          severity={alert?.variant}
           variant="standard"
           action={
             <IconButton
@@ -21,15 +28,14 @@ const MatAlert = () => {
               color="inherit"
               size="small"
               onClick={() => {
-                setOpen(false);
+                dispatch(unsetAlert());
               }}
             >
               <CloseIcon fontSize="inherit" />
             </IconButton>
           }
-          sx={{ mb: 2 }}
         >
-          Close me!
+          {alert?.text}
         </Alert>
       </Collapse>
     </Box>

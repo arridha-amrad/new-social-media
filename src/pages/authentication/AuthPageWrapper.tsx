@@ -1,7 +1,11 @@
 import Paper from "@mui/material/Paper";
-import { ReactNode } from "react";
-import { useLocation } from "react-router-dom";
+import { ReactNode, useEffect } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import AuthFooter from "../../components/Footer/AuthFooter";
+import MatAlert from "../../materialComponent/MatAlert";
+import { selectAlert, unsetAlert } from "../../store/Alert/alertSlice";
+import { useAppDispatch, useAppSelector } from "../../store/hooks";
+import { selectUserState } from "../../store/User/userSlice";
 
 import "./styles/authentication.css";
 
@@ -23,12 +27,32 @@ const AuthPageWrapper = ({ children }: { children: ReactNode }) => {
       "https://images.unsplash.com/photo-1528498033373-3c6c08e93d79?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=685&q=80";
   }
 
+  const { pathname } = useLocation();
+  const dispatch = useAppDispatch();
+
+  const user = useAppSelector(selectUserState);
+  const alert = useAppSelector(selectAlert);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (user) {
+      navigate("/");
+    }
+    // eslint-disable-next-line
+  }, [user]);
+
+  useEffect(() => {
+    dispatch(unsetAlert());
+    // eslint-disable-next-line
+  }, [pathname]);
+
   return (
     <div className="auth-page">
       <div className="main">
         <Paper className="container" elevation={3}>
           <div className="form">
             <h1 className="title">Let's Join Us !</h1>
+            <MatAlert alert={alert} />
             {children}
           </div>
           <div className="wallpaper">

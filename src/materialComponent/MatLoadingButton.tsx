@@ -6,15 +6,22 @@ interface MatButtonProps {
   isFullWidth?: boolean;
   label: string;
   type?: "button" | "submit";
+  isLoading?: boolean;
 }
 
 const MatButton: FC<MatButtonProps> = ({
   type = "submit",
   isFullWidth = false,
   label,
+  isLoading = false,
 }) => {
   return (
-    <LoadingButton type={type} fullWidth={isFullWidth} variant="contained">
+    <LoadingButton
+      loading={isLoading}
+      type={type}
+      fullWidth={isFullWidth}
+      variant="contained"
+    >
       {label}
     </LoadingButton>
   );

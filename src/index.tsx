@@ -8,13 +8,16 @@ import ThemeProvider from "@mui/material/styles/ThemeProvider";
 import theme from "./materialTheme";
 import { BrowserRouter } from "react-router-dom";
 import { store } from "./store";
+import { SnackbarProvider } from "notistack";
 
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
       <ThemeProvider theme={theme}>
         <BrowserRouter>
-          <App />
+          <SnackbarProvider maxSnack={3}>
+            <App />
+          </SnackbarProvider>
         </BrowserRouter>
       </ThemeProvider>
     </Provider>

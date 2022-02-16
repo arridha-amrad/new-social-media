@@ -5,14 +5,22 @@ import IconButton from "@mui/material/IconButton";
 import InputAdornment from "@mui/material/InputAdornment";
 import InputLabel from "@mui/material/InputLabel";
 import OutlinedInput from "@mui/material/OutlinedInput";
-import { useState } from "react";
+import { ChangeEventHandler, FC, useState } from "react";
 
-const InputPassword = () => {
+interface Props {
+  onChange?: ChangeEventHandler<HTMLInputElement>;
+  value?: string;
+}
+
+const MatInputPassword: FC<Props> = ({ onChange, value }) => {
   const [isShow, setShow] = useState(false);
   return (
     <FormControl fullWidth variant="outlined">
       <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
       <OutlinedInput
+        name="password"
+        value={value}
+        onChange={onChange}
         type={isShow ? "text" : "password"}
         endAdornment={
           <InputAdornment position="end">
@@ -27,4 +35,4 @@ const InputPassword = () => {
   );
 };
 
-export default InputPassword;
+export default MatInputPassword;

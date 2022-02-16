@@ -1,60 +1,73 @@
+import "./styles/authentication.css";
+
 import { Link } from "react-router-dom";
-import MatAlert from "../../materialComponent/MatAlert";
 import MatButtonGoogle from "../../materialComponent/MatButtonGoogle";
 import MatDivider from "../../materialComponent/MatDivider";
 import InputPassword from "../../materialComponent/MatInputPassword";
 import MatButton from "../../materialComponent/MatLoadingButton";
 import MatTextField from "../../materialComponent/MatInputText";
 import AuthPageWrapper from "./AuthPageWrapper";
-
-import "./styles/authentication.css";
-import { useAppDispatch, useAppSelector } from "../../store/hooks";
-import {
-  selectAlert,
-  setAlert,
-  setSnackbar,
-} from "../../store/Alert/alertSlice";
+import { useAppDispatch } from "../../store/hooks";
 import { FormEvent, useState } from "react";
-import MatSnackbar from "../../materialComponent/MatSnackbar";
+import Typography from "@mui/material/Typography";
+import UseForm from "../../utils/useForm";
+import { registration } from "../../store/User/userSlice";
 
 const Register = () => {
-  const [showSnackbar, setShowSnackbar] = useState(false);
+  const [loading, setLoading] = useState(false);
   const dispatch = useAppDispatch();
+
+  const { onChange, state } = UseForm({
+    email: "",
+    username: "",
+    password: "",
+  });
+
   const onSubmit = (e: FormEvent) => {
     e.preventDefault();
-    // setShowSnackbar(true);
-    dispatch(
-      setSnackbar({
-        text: "Register Success",
-        variant: "error",
-      })
-    );
+    setLoading(true);
+    dispatch(registration(state)).then(() => {
+      setLoading(false);
+    });
   };
-
-  const alert = useAppSelector(selectAlert);
 
   return (
     <AuthPageWrapper>
-      <MatAlert alert={alert} />
-
       <form className="form-auth" onSubmit={onSubmit}>
-        <MatTextField isFullWidth={true} label="Email" variant="outlined" />
+        <MatTextField
+          onChange={onChange}
+          name="email"
+          value={state.email}
+          isFullWidth={true}
+          label="Email"
+          variant="outlined"
+        />
 
-        <MatTextField isFullWidth={true} label="Username" variant="outlined" />
+        <MatTextField
+          onChange={onChange}
+          name="username"
+          value={state.username}
+          isFullWidth={true}
+          label="Username"
+          variant="outlined"
+        />
 
-        <InputPassword />
+        <InputPassword onChange={onChange} value={state.password} />
 
-        <MatButton type="submit" isFullWidth={true} label="Register" />
+        <MatButton
+          isLoading={loading}
+          type="submit"
+          isFullWidth={true}
+          label="Register"
+        />
 
-        <div className="mid-text">
+        <Typography variant="body1" textAlign="center">
           have an account ?<Link to="/login">&nbsp;login</Link>
-        </div>
+        </Typography>
 
         <MatDivider />
 
-        <MatSnackbar isShow={showSnackbar} setShow={setShowSnackbar} />
-
-        <MatButtonGoogle />
+        <MatButtonGoogle isDisabled={loading} />
       </form>
     </AuthPageWrapper>
   );

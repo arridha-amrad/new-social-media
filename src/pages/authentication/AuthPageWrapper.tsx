@@ -1,7 +1,7 @@
 import Paper from "@mui/material/Paper";
 import { ReactNode, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import AuthFooter from "../../components/Footer/AuthFooter";
+import { AuthFooter } from "../../components";
 import MatAlert from "../../materialComponent/MatAlert";
 import { selectAlert, unsetAlert } from "../../store/Alert/alertSlice";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";

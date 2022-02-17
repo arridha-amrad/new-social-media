@@ -9,6 +9,8 @@ interface MatInputTextProps {
   name: string;
   value?: string;
   onChange?: ChangeEventHandler<HTMLTextAreaElement | HTMLInputElement>;
+  isMultiLine?: boolean;
+  rows?: number;
 }
 
 const MatInputText: FC<MatInputTextProps> = ({
@@ -19,9 +21,13 @@ const MatInputText: FC<MatInputTextProps> = ({
   onChange,
   name,
   value,
+  isMultiLine = false,
+  rows = 1,
 }) => {
   return (
     <TextField
+      rows={rows}
+      multiline={isMultiLine}
       onChange={onChange}
       name={name}
       value={value}

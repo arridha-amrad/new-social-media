@@ -1,7 +1,7 @@
 import { useLayoutEffect, useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import { getLoginUserAPI } from "./API/user/userApi";
-import ProtectedRoutes from "./components/Protected";
+import { ProtectedRoute } from "./components";
 import MatBackdrop from "./materialComponent/MatBackdrop";
 import { Home, Login, Register, ForgotPassword, ResetPassword } from "./pages";
 import { useAppDispatch } from "./store/hooks";
@@ -39,7 +39,7 @@ const App = () => {
 
   return (
     <Routes>
-      <Route element={<ProtectedRoutes />}>
+      <Route element={<ProtectedRoute />}>
         <Route path="/" element={<Home />} />
       </Route>
       <Route path="/login" element={<Login />} />

@@ -13,6 +13,11 @@ body {
   font-family: "Lato";
 }
 
+textarea {
+  font-family: "Lato";
+  font-size: 1rem;
+}
+
 a,
 input {
   font-size: 1rem;
@@ -20,18 +25,4 @@ input {
 
 a {
   text-decoration: none;
-}
-
-input {
-  padding: 0.5rem;
-  outline: 1px solid #eee;
-  border-radius: 0.3rem;
-  border: none;
-  width: 100%;
-}
-
-input:focus {
-  outline: 1px solid purple;
-  outline-offset: 2px;
-  border: none;
 }

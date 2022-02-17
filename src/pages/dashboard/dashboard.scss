@@ -1,0 +1,15 @@
+.home-user {
+  display: flex;
+  align-items: stretch;
+  margin-top: 2rem;
+  gap: 2rem;
+  height: max-content;
+}
+
+.home-posts {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: flex-start;
+}

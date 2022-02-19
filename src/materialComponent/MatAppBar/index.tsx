@@ -8,8 +8,8 @@ import Slide from "@mui/material/Slide";
 import IconButton from "@mui/material/IconButton";
 import Badge from "@mui/material/Badge";
 import NotificationsIcon from "@mui/icons-material/Notifications";
-import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
+import LogoutButton from "./LogoutButton";
 interface Props {
   children: React.ReactElement;
 }
@@ -40,9 +40,7 @@ const MatAppBar = () => {
                     <NotificationsIcon sx={{ color: "#fff", fontSize: 30 }} />
                   </Badge>
                 </IconButton>
-                <Button variant="text" sx={{ color: "#fff" }}>
-                  Logout
-                </Button>
+                <LogoutButton />
               </Box>
             </Toolbar>
           </Container>

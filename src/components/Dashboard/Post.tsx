@@ -1,4 +1,3 @@
-import "./style.css";
 import styled from "@mui/material/styles/styled";
 import Card from "@mui/material/Card";
 import CardHeader from "@mui/material/CardHeader";
@@ -17,8 +16,8 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import Box from "@mui/system/Box";
 import { useState } from "react";
-import Comment from "../Comment";
-import CommentForm from "../CommentForm";
+import Comment from "./Comment";
+import CommentForm from "./CommentForm";
 
 interface ExpandMoreProps extends IconButtonProps {
   expand: boolean;

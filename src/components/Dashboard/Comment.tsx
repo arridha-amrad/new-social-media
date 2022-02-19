@@ -1,4 +1,4 @@
-import "./style.css";
+import "./styles/dashboard.css"
 
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
@@ -9,9 +9,6 @@ import Collapse from "@mui/material/Collapse";
 import { useRef, useState } from "react";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import styled from "@mui/material/styles/styled";
-import CommentOfCommentForm from "./CommentOfCommentForm";
-import TextField from "@mui/material/TextField";
-import Input from "@mui/material/Input";
 
 interface ExpandMoreProps extends IconButtonProps {
   expand: boolean;

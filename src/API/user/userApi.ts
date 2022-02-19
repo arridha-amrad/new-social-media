@@ -39,3 +39,7 @@ export const getLoginUserAPI = async () => {
 export const refreshToken = async () => {
   return axiosInstance.get("/api/auth/refresh-token");
 };
+
+export const logoutAPI = async () => {
+  return axiosInstance.post("/api/auth/logout")
+}

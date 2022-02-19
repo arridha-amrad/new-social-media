@@ -1,20 +1,23 @@
 import InputPassword from "../../materialComponent/MatInputPassword";
 import MatButton from "../../materialComponent/MatLoadingButton";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import MatButtonGoogle from "../../materialComponent/MatButtonGoogle";
 import MatDivider from "../../materialComponent/MatDivider";
 
 import "./styles/authentication.css";
 import MatTextField from "../../materialComponent/MatInputText";
 import AuthPageWrapper from "./AuthPageWrapper";
-import { useAppDispatch } from "../../store/hooks";
-import { FormEvent } from "react";
-import { login } from "../../store/User/userSlice";
+import { useAppDispatch, useAppSelector } from "../../store/hooks";
+import { FormEvent, useEffect, useState } from "react";
+import { login, selectUserState } from "../../store/User/userSlice";
 import UseForm from "../../utils/useForm";
 import { LoginDTO } from "../../API/user/types";
 
 const Login = () => {
   const dispatch = useAppDispatch();
+  const navigate = useNavigate()
+  const { isLoadingAuth, user } = useAppSelector(selectUserState)
+  const [isMounted, setMounted] = useState(true)
 
   const { onChange, state } = UseForm<LoginDTO>({
     identity: "",
@@ -24,7 +27,15 @@ const Login = () => {
   const onSubmit = (e: FormEvent) => {
     e.preventDefault();
     dispatch(login(state));
+    navigate("/")
   };
+
+  useEffect(() => {
+    if (isMounted && !isLoadingAuth && user) {
+      navigate("/")
+    }
+    return () => setMounted(false)
+  }, [])
 
   return (
     <AuthPageWrapper>

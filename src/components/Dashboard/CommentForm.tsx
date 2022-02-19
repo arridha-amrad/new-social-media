@@ -1,4 +1,4 @@
-import "./style.css";
+import "./styles/dashboard.css"
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 

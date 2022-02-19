@@ -92,6 +92,9 @@ export const userSlice = createSlice({
     setUser: (state, action: PayloadAction<User>) => {
       state.user = action.payload;
     },
+    unsetUser: (state) => {
+      state.user = null
+    }
   },
   extraReducers: (builder) => {
     builder.addCase(login.pending, (state) => {
@@ -107,7 +110,7 @@ export const userSlice = createSlice({
   },
 });
 
-export const { setUser } = userSlice.actions;
+export const { setUser, unsetUser } = userSlice.actions;
 
 export const selectUserState = (state: RootState) => state.user;
 

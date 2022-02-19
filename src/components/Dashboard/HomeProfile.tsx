@@ -1,8 +1,9 @@
-import "./style.css";
+import "./styles/dashboard.css"
+
 import Avatar from "@mui/material/Avatar";
 import Typography from "@mui/material/Typography";
-import { useAppSelector } from "../../../store/hooks";
-import { selectUserState } from "../../../store/User/userSlice";
+import { useAppSelector } from "../../store/hooks";
+import { selectUserState } from "../../store/User/userSlice";
 import EmailIcon from "@mui/icons-material/EmailOutlined";
 
 const HomeProfile = () => {

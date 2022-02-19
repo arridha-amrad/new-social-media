@@ -1,7 +1,7 @@
-import "./style.css";
+import "./styles/dashboard.css"
 import Button from "@mui/material/Button";
 import { Typography } from "@mui/material";
-import UseForm from "../../../utils/useForm";
+import UseForm from "../../utils/useForm";
 
 const PostComposer = () => {
   const { onChange, state } = UseForm({

@@ -1,11 +1,10 @@
 import Paper from "@mui/material/Paper";
 import { ReactNode, useEffect } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { AuthFooter } from "../../components";
 import MatAlert from "../../materialComponent/MatAlert";
 import { selectAlert, unsetAlert } from "../../store/Alert/alertSlice";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
-import { selectUserState } from "../../store/User/userSlice";
 
 import "./styles/authentication.css";
 
@@ -30,16 +29,7 @@ const AuthPageWrapper = ({ children }: { children: ReactNode }) => {
   const { pathname } = useLocation();
   const dispatch = useAppDispatch();
 
-  const user = useAppSelector(selectUserState);
   const alert = useAppSelector(selectAlert);
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    if (user) {
-      navigate("/");
-    }
-    // eslint-disable-next-line
-  }, [user]);
 
   useEffect(() => {
     dispatch(unsetAlert());

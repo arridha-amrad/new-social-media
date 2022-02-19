@@ -20,6 +20,8 @@ const App = () => {
       if (isMounted) {
         dispatch(setUser(data.user));
       }
+    } catch (err) {
+      console.log(err);
     } finally {
       setTimeout(() => {
         setLoading(false);

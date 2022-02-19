@@ -8,7 +8,7 @@ const theme = createTheme({
     error: red,
   },
   typography: {
-    fontFamily: "Lato",
+    fontFamily: "Roboto",
     caption: {
       fontSize: ".8rem",
     },
@@ -26,7 +26,7 @@ const theme = createTheme({
     MuiButton: {
       defaultProps: {
         disableElevation: true,
-        size: "large",
+        size: "medium",
       },
     },
     // Name of the component

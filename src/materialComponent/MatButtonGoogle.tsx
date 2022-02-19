@@ -3,6 +3,7 @@ import GoogleIcon from "@mui/icons-material/Google";
 import orange from "@mui/material/colors/orange";
 import styled from "@emotion/styled";
 import { FC } from "react";
+import getGoogleOauthURL from "../utils/googleAuthURL";
 
 const ColorButton = styled(Button)<ButtonProps>(() => ({
   backgroundColor: orange[500],
@@ -16,8 +17,13 @@ interface Props {
 }
 
 const MatButtonGoogle: FC<Props> = ({ isDisabled = false }) => {
+
+  const googleLogin = () => {
+    window.open(getGoogleOauthURL(), "_blank")
+  }
   return (
     <ColorButton
+      onClick={googleLogin}
       disabled={isDisabled}
       fullWidth
       variant="contained"

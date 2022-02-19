@@ -69,17 +69,21 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  border: 1px solid #eee;
+  border-radius: 0.5rem;
+  padding: 1rem 1rem 0;
 }
 
 .form-post textarea {
-  border: 1px solid #eee;
-  padding: 1rem;
-  border-radius: 0.5rem;
+  border: none;
   resize: none;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
 }
 
 .form-post textarea:focus {
-  outline: 1px solid #b9b9b9;
+  outline: none;
 }
 
 .form-post .action {
@@ -90,7 +94,12 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  margin-top: 0.3rem;
+  margin: 0.5rem 0;
+}
+
+.form-post .action .attach_file {
+  -ms-flex-item-align: end;
+      align-self: flex-end;
 }
 
 .comment-container {

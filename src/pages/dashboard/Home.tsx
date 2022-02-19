@@ -4,6 +4,7 @@ import Container from "@mui/material/Container";
 import Box from "@mui/material/Box";
 import MatAppBar from "../../materialComponent/MatAppBar";
 import { HomeProfile, Post, PostComposer } from "../../components";
+import MatCarousel from "../../materialComponent/MatCarousel";
 
 const Home = () => {
   return (

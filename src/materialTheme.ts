@@ -6,6 +6,7 @@ const theme = createTheme({
   palette: {
     primary: purple,
     error: red,
+
   },
   typography: {
     fontFamily: "Roboto",

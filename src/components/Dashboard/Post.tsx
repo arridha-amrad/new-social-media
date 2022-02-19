@@ -18,6 +18,7 @@ import Box from "@mui/system/Box";
 import { useState } from "react";
 import Comment from "./Comment";
 import CommentForm from "./CommentForm";
+import MatCarousel from "../../materialComponent/MatCarousel";
 
 interface ExpandMoreProps extends IconButtonProps {
   expand: boolean;
@@ -60,12 +61,15 @@ export default function RecipeReviewCard() {
         title="Shrimp and Chorizo Paella"
         subheader="September 14, 2016"
       />
-      <CardMedia
-        component="img"
-        height="auto"
-        image="https://images.unsplash.com/photo-1640622332859-55e65253475d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
-        alt="Paella dish"
-      />
+
+      <MatCarousel />
+      {/* <CardMedia
+          height="auto"
+          component="img"
+          image="https://images.unsplash.com/photo-1640622332859-55e65253475d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
+          alt="Paella dish"
+        /> */}
+
       <CardContent>
         <Typography variant="body2" color="text.secondary">
           This impressive paella is a perfect party dish and a fun meal to cook
